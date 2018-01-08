@@ -61,7 +61,7 @@
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Config\ConfigManager.cs" />
-    <Compile Include="ExtensionMethod\DateTimeExtensionMethods.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="IO\PathHelper.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

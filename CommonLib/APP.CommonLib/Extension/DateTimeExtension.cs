@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace APP.CommonLib.ExtensionMethod
+namespace APP.CommonLib.Extension
 {
     /// <summary>
     /// DateTime的扩展方法
     /// </summary>
-    public static class DateTimeExtensionMethods
+    public static class DateTimeExtension
     {
         /// <summary>
         /// 扩展方法：计算日期是年内的第几周,一周从星期天开始

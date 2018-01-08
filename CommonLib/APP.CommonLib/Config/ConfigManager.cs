@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
+using APP.CommonLib.Log;
+
 namespace APP.CommonLib.Config
 {
     /// <summary>
@@ -18,7 +20,7 @@ namespace APP.CommonLib.Config
         /// <param name="key">配置key</param>
         /// <param name="defaultValue">默认值</param>
         /// <returns>配置值</returns>
-        public static string GetWebConfig(string key,string defaultValue = "")
+        public static string GetWebConfig(string key, string defaultValue = "")
         {
             try
             {
@@ -26,8 +28,9 @@ namespace APP.CommonLib.Config
                 if (!string.IsNullOrWhiteSpace(value))
                     return value;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logger.Error(string.Format("获取web配置文件中指定Key的值错误，原因：{0}-{1}", ex.Message, ex.StackTrace));
             }
             return defaultValue;
         }
@@ -49,9 +52,9 @@ namespace APP.CommonLib.Config
                 if (int.TryParse(value, out int v))
                     return v;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Logger.Error(string.Format("获取web配置文件中指定Key的值错误，原因：{0}-{1}", ex.Message, ex.StackTrace));
             }
             return defaultValue;
         }
@@ -73,9 +76,9 @@ namespace APP.CommonLib.Config
                 if (long.TryParse(value, out long v))
                     return v;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Logger.Error(string.Format("获取web配置文件中指定Key的值错误，原因：{0}-{1}", ex.Message, ex.StackTrace));
             }
             return defaultValue;
         }
@@ -86,7 +89,7 @@ namespace APP.CommonLib.Config
         /// <param name="key">配置key</param>
         /// <param name="defaultValue">默认值</param>
         /// <returns>配置值</returns>
-        public static bool GetWebConfig(string key ,bool defaultValue= false)
+        public static bool GetWebConfig(string key, bool defaultValue = false)
         {
             try
             {
@@ -98,9 +101,9 @@ namespace APP.CommonLib.Config
                 if (Boolean.TryParse(value, out bool v))
                     return v;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Logger.Error(string.Format("获取web配置文件中指定Key的值错误，原因：{0}-{1}", ex.Message, ex.StackTrace));
             }
             return defaultValue;
         }
@@ -121,7 +124,7 @@ namespace APP.CommonLib.Config
                     XmlDocument doc = new XmlDocument();
                     doc.Load(xmlFileName);
                     XmlElement elememt = doc.DocumentElement;
-                    if(elememt == null || !string.Equals(elememt.Name, "configuration"))
+                    if (elememt == null || !string.Equals(elememt.Name, "configuration"))
                         throw new Exception("DOM element is null or is not a configuration element.");
 
                     XmlNode node = elememt as XmlNode;
@@ -132,7 +135,7 @@ namespace APP.CommonLib.Config
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("读取XML文件,将XML文件内容转换成指定类型的对象失败，原因：{0} {1}", ex.Message, ex.StackTrace));
+                Logger.Error(string.Format("读取XML文件,将XML文件内容转换成指定类型的对象失败，原因：{0} {1}", ex.Message, ex.StackTrace));
             }
             return ot;
         }
@@ -170,7 +173,7 @@ namespace APP.CommonLib.Config
         /// <param name="t">类型</param>
         /// <param name="xnode">xml节点</param>
         /// <returns>object</returns>
-        private static object SetValue(Type t , XmlNode xnode)
+        private static object SetValue(Type t, XmlNode xnode)
         {
             if (xnode == null)
                 return null;
