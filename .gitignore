@@ -155,3 +155,7 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 /CommonLib/.vs/CommonLib/v15/Server/sqlite3
+/APP.QRWeb/.vs
+/CommonLib/.vs/config
+/CommonLib/packages
+/APP.QRWeb/packages

@@ -1,5 +1,6 @@
 ﻿using System;
 using APP.CommonLib.Cache;
+using APP.CommonLib.Encrypt;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CommonLib.Test
@@ -19,15 +20,28 @@ namespace CommonLib.Test
             //var obj1 = CacheManager.RemoveWebCache("Test.one", "test");
             //string value4 = CacheManager.GetWebCache("Test.one", "test");
 
-            CacheManager.PutRedisCache("App", "Loing", "123456", -1);
-            string rv = CacheManager.GetRedisCache("App", "Loing");
-            CacheManager.DelRedisCache("App", "Login");
+            //CacheManager.PutRedisCache("App", "Loing", "123456", -1);
+            //string rv = CacheManager.GetRedisCache("App", "Loing");
+            //CacheManager.DelRedisCache("App", "Login");
 
 
-            CacheManager.PutRedisCache("App1", "Loing1", "123456", 300);
-            string rv1 = CacheManager.GetRedisCache("App1", "Loing1");
-            CacheManager.DelRedisCache("App1", "Login1");
-            string rv2 = CacheManager.GetRedisCache("App1", "Loing1");
+            //CacheManager.PutRedisCache("App1", "Loing1", "123456", 300);
+            //string rv1 = CacheManager.GetRedisCache("App1", "Loing1");
+            //CacheManager.DelRedisCache("App1", "Login1");
+            //string rv2 = CacheManager.GetRedisCache("App1", "Loing1");
+
+
+            EncryptVersion eVersion = EncryptVersion.AES;
+            IEncryptManager manager = EncryptFactory.CreateEncryptManager(eVersion);
+
+            string data = manager.EncryptData("test encry");
+            string data2 = manager.DecryptData(data);
+
+            eVersion = EncryptVersion.ONE;
+            manager = EncryptFactory.CreateEncryptManager(eVersion);
+
+            string str = manager.EncryptData("test encry");
+            string str2 = manager.DecryptData(str);
         }
     }
 }

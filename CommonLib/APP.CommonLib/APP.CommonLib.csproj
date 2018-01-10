@@ -61,7 +61,12 @@
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Config\ConfigManager.cs" />
+    <Compile Include="Encrypt\AESEncodeHelper.cs" />
+    <Compile Include="Encrypt\EncryptFactory.cs" />
+    <Compile Include="Encrypt\EncryptV1.cs" />
+    <Compile Include="Encrypt\IEncryptManager.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="IO\PathHelper.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +75,14 @@
     <Compile Include="Redis\RedisLock.cs" />
     <Compile Include="Utils\JsonHelper.cs" />
     <Compile Include="Utils\ThreadBox.cs" />
+    <Compile Include="Utils\TimeFormat.cs" />
+    <Compile Include="Utils\WebHelper.cs" />
+    <Compile Include="XHttp\XHttpHandler.cs" />
+    <Compile Include="XHttp\XHttpRequest.cs" />
+    <Compile Include="XHttp\XHttpResponse.cs" />
+    <Compile Include="XService\ServiceConfig.cs" />
+    <Compile Include="XService\ServiceEngine.cs" />
+    <Compile Include="XService\ServiceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
